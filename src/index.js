@@ -1,14 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import Test from './Test';
+import Button from './Button';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
-    <Test />
+    <Button let myMsg="Hello Nicholas!"/>
   </React.StrictMode>,
   document.getElementById('root')
 );
