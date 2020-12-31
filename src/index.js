@@ -3,10 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import Button from './Button';
 import reportWebVitals from './reportWebVitals';
+import RestController from './RestController';
 
 ReactDOM.render(
   <React.StrictMode>
     <Button let myMsg="Hello Nicholas!"/>
+    <RestController />
   </React.StrictMode>,
   document.getElementById('root')
 );
