@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './button.css';
 
 function Button(props) {
-
+  const [msg, setMsg] = useState(props.myMsg);
+  const [fontSize, setFontSize] = useState(100);
+  
   function clickMe() {
-    alert(props.myMsg)
+    setMsg(msg + "...again");
+    setFontSize(fontSize + 10);
   }
   
   return( 
@@ -12,6 +15,7 @@ function Button(props) {
       <button onClick={clickMe}>
         Button
       </button>
+      <p style={{fontSize: fontSize+"%"}}>{msg}</p>
     </div>
   ); 
 }
