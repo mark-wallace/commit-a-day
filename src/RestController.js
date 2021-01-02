@@ -1,41 +1,46 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
-class RestController extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {user: []};
-	}
-	
-	componentDidMount() {
-		fetch('http://localhost:3000', {
-			method: 'POST',
-			body: JSON.stringify({
-				title: 'New title added',
-				body: 'New body added. Hello body.',
-				userId: 2
-			}),
-			headers: {
-				"Content-type": "application/json; charset=UTF-8"
-			}
-		}).then(response => {
-				return response.json()
-			}).then(json => {
-				this.setState({
-					user:json
-				});
-			});
-	}
-	render() {                            
-		return (
-			<div>
-				<p><b>New Resource created in the server as shown below</b></p>
-				<p>Id : {this.state.user.id}</p>
-				<p>Title : {this.state.user.title}</p>
-				<p>Body : {this.state.user.body}</p>
-				<p>UserId : {this.state.user.userId}</p>
-			</div>
+function RestController() {
+	const [error, setError] = useState(null);
+	const [isLoaded, setIsLoaded] = useState(false);
+	const [items, setItems] = useState([]);
+  
+	// Note: the empty deps array [] means
+	// this useEffect will run once
+	// similar to componentDidMount()
+	useEffect(() => {
+	  fetch("/api/items")
+		.then(res => res.json())
+		.then(
+		  (result) => {
+			setIsLoaded(true);
+			setItems(result);
+		  },
+		  // Note: it's important to handle errors here
+		  // instead of a catch() block so that we don't swallow
+		  // exceptions from actual bugs in components.
+		  (error) => {
+			setIsLoaded(true);
+			setError(error);
+		  }
 		)
+	}, [])
+  
+	if (error) {
+	  return <div>Error: {error.message}</div>;
+	} else if (!isLoaded) {
+	  return <div>Loading...</div>;
+	} else {
+	  return (
+		<ul>
+		  {items.map(item => (
+			<li key={item.id}>
+			  {item.name} {item.price}
+			</li>
+		  ))}
+		</ul>
+	  );
 	}
-}
+  }
 
-export default RestController;
+  export default RestController;

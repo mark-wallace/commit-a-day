@@ -4,6 +4,9 @@ import './index.css';
 import Button from './Button';
 import reportWebVitals from './reportWebVitals';
 import RestController from './RestController';
+import server from './server.js';
+
+server();
 
 ReactDOM.render(
   <React.StrictMode>
