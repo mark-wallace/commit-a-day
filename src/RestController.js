@@ -9,12 +9,12 @@ function RestController() {
 	// this useEffect will run once
 	// similar to componentDidMount()
 	useEffect(() => {
-	  fetch("/api/items")
+	  fetch(`/api/items`)
 		.then(res => res.json())
 		.then(
 		  (result) => {
 			setIsLoaded(true);
-			setItems(result);
+			setItems(result.items);
 		  },
 		  // Note: it's important to handle errors here
 		  // instead of a catch() block so that we don't swallow
@@ -32,13 +32,15 @@ function RestController() {
 	  return <div>Loading...</div>;
 	} else {
 	  return (
-		<ul>
-		  {items.map(item => (
-			<li key={item.id}>
-			  {item.name} {item.price}
-			</li>
-		  ))}
-		</ul>
+		<div className="flexbox-container">
+			{items.map(item => (
+			  <div key={item.id}>
+				  <h1 className="flexbox-h1">{item.name}</h1>
+				  <div className="flexbox-item"></div>
+				  <p>${item.price}</p>
+			  </div>
+			))}
+		</div>
 	  );
 	}
   }
