@@ -1,4 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import {
+	BrowserRouter as Router,
+	Link
+  } from "react-router-dom";
 
 function RestController() {
 	const [error, setError] = useState(null);
@@ -32,15 +36,18 @@ function RestController() {
 	  return <div>Loading...</div>;
 	} else {
 	  return (
-		<div className="flexbox-container">
-			{items.map(item => (
-			  <div key={item.id}>
-				  <h1 className="flexbox-h1">{item.name}</h1>
-				  <div className="flexbox-item"></div>
-				  <p>${item.price}</p>
-			  </div>
-			))}
-		</div>
+		<Router>
+			<div className="flexbox-container">
+				{items.map(item => (
+				<div key={item.id}>
+					<h1 className="flexbox-h1">{item.name}</h1>
+					<div className="flexbox-item"></div>
+					<p>${item.price}</p>
+					<Link to={item.links.product.href}>More Info</Link>
+				</div>
+				))}
+			</div>
+		</Router>
 	  );
 	}
   }
