@@ -8,7 +8,7 @@ function server() {
           { id: 1, name : "t-shirt", price : 4.00,
             links : {
               self : { href : "/api/items/1" },
-              product : {href : "/products/1"}
+              product : {href : "/products?id=1"}
             }
           },           
           //  { id: 2, name : "pants", price : 12.00 },
