@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Button from './Button';
+import Button from './button';
 import reportWebVitals from './reportWebVitals';
-import RestController from './RestController';
+import ProductList from './productList';
 import server from './server.js';
 
 server();
@@ -11,7 +11,7 @@ server();
 ReactDOM.render(
   <React.StrictMode>
     <Button let myMsg="Hello Nicholas!"/>
-    <RestController />
+    <ProductList />
   </React.StrictMode>,
   document.getElementById('root')
 );

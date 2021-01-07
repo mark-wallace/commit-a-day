@@ -4,7 +4,7 @@ import {
 	Link
   } from "react-router-dom";
 
-function RestController() {
+function ProductList() {
 	const [error, setError] = useState(null);
 	const [isLoaded, setIsLoaded] = useState(false);
 	const [items, setItems] = useState([]);
@@ -36,15 +36,16 @@ function RestController() {
 	  return <div>Loading...</div>;
 	} else {
 	  return (
-		<Router>
+		<Router>			
 			<div className="flexbox-container">
 				{items.map(item => (
-				<div key={item.id}>
-					<h1 className="flexbox-h1">{item.name}</h1>
-					<div className="flexbox-item"></div>
-					<p>${item.price}</p>
-					<Link to={item.links.product.href}>More Info</Link>
-				</div>
+					<div key={item.id}>
+						<Link to={item.links.product.href}>
+							<h1 className="flexbox-h1">{item.name}</h1>
+							<div className="flexbox-item"></div>
+							<p>${item.price}</p>
+						</Link>
+					</div>
 				))}
 			</div>
 		</Router>
@@ -52,4 +53,4 @@ function RestController() {
 	}
   }
 
-  export default RestController;
+  export default ProductList;
