@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './button.css';
+import '../styles/Button.css';
 
 function Button(props) {
   const [msg, setMsg] = useState(props.myMsg);

@@ -14,7 +14,7 @@ code {
 
 .flexbox-container {
   display : flex;
-  flex : wrap;
+  flex-wrap : wrap;
 }
 
 .flexbox-item {
