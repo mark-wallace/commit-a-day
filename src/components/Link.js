@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/Index.css"
+// import "../styles/Index.css"
 //Link component prevents full page reloads when an anchor is clicked.
 //creates an event which will tell the Route component to re-render.
 const Link = ({ className, href, children }) => {
